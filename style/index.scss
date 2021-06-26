@@ -1,0 +1,808 @@
+@import "color.scss";
+@import "util.scss";
+
+body {
+    padding-top: 80px;
+
+    @media (max-width: $screenBP) {
+        padding-top: 180px;
+    }
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: $colourPaletteLight1;
+    z-index: 100;
+    transition: box-shadow 0.3s ease-in-out;
+
+    &.highlight {
+        box-shadow: 0 4px 16px 0 rgba($color: $colourPaletteDark, $alpha: 0.3);
+    }
+
+    div.container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        span {
+            font-size: 2rem;
+
+            span {
+                color: $highlightColourLight;
+            }
+        }
+
+        nav ul {
+            display: flex;
+            list-style-type: none;
+            align-items: center;
+            flex-wrap: wrap;
+
+            li {
+                padding: 10px 15px;
+
+                &.active {
+                    &::before {
+                        visibility: visible;
+                        transform: scaleX(1);
+                    }
+                }
+            }
+
+            @media (max-width: $screenBP) {
+                margin-top: 20px;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: $screenBP) {
+            flex-direction: column;
+            justify-content: center;
+        }
+    }
+}
+
+section.intro-section {
+    div.container {
+        height: 75vh;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        @media (max-width: $screenBP) {
+            height: auto;
+            flex-direction: column-reverse;
+        }
+
+        div.intro-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin: 10px 0px;
+
+            #intro-message {
+                display: inline-block;
+                align-self: flex-start;
+                background-color: $highlightColourLight;
+                color: $colourPaletteLight1;
+                padding: 10px 25px;
+                border-radius: 20px;
+                border-bottom-left-radius: 0px;
+
+                @media (max-width: $screenBP) {
+                    align-self: center;
+                }
+            }
+
+            span,
+            h1,
+            h3 {
+                margin: 10px 0px;
+            }
+
+            h1 {
+                font-size: 3rem;
+
+                @media (max-width: $screenBP) {
+                    font-size: 2rem;
+                }
+            }
+
+            h3 {
+                font-size: 1.75rem;
+                margin-top: 0px;
+                margin-bottom: 30px;
+
+                @media (max-width: $screenBP) {
+                    font-size: 1.5rem;
+                }
+            }
+
+            h1,
+            h3 {
+                @media (max-width: $screenBP) {
+                    text-align: center;
+                }
+            }
+
+            div.intro-link {
+                margin: 5px 0px;
+                display: flex;
+                align-items: center;
+
+                @media (max-width: $screenBP) {
+                    justify-content: center;
+                }
+
+                &:hover {
+                    fill: $highlightColourDark;
+                }
+
+                svg {
+                    height: 1rem;
+                    margin-right: 10px;
+                }
+
+                span {
+                    margin: 2px;
+
+                    a {
+                        color: $colourPaletteDark;
+                        padding-bottom: 5px;
+                    }
+                }
+            }
+
+            div.social-icons {
+                margin-top: 30px;
+                display: flex;
+                justify-content: start;
+
+                @media (max-width: $screenBP) {
+                    justify-content: center;
+                }
+
+                svg {
+                    display: inline-block;
+                    margin-right: 25px;
+                    height: 20px;
+                    &:hover {
+                        fill: $highlightColourDark;
+                    }
+                }
+
+                a:last-child svg {
+                    margin-right: 0px;
+                }
+            }
+        }
+
+        div.intro-image {
+            min-width: 430px;
+            min-height: 430px;
+            margin: 10px 0px;
+            position: relative;
+            align-self: center;
+            @media (max-width: $screenBP) {
+                min-width: 330px;
+                min-height: 330px;
+            }
+
+            div#border-outer {
+                width: 430px;
+                height: 430px;
+                position: absolute;
+                top: 50%;
+                right: 0px;
+                z-index: 2;
+                transform: translate(0, -50%);
+                border-radius: 100%;
+                border: 40px solid rgba($color: $highlightColourDark, $alpha: 0.2);
+                box-shadow: 0 2px 8px 0 rgba($color: $colourPaletteDark, $alpha: 0.3);
+
+                @media (max-width: $screenBP) {
+                    width: 330px;
+                    height: 330px;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
+            }
+
+            div#border-inner {
+                height: 350px;
+                width: 350px;
+                position: absolute;
+                top: 50%;
+                right: 40px;
+                z-index: 1;
+                transform: translate(0, -50%);
+                border-radius: 100%;
+                border: 25px solid rgba($color: $highlightColourDark, $alpha: 0.4);
+                box-shadow: 0 2px 8px 0 rgba($color: $colourPaletteDark, $alpha: 0.3);
+
+                @media (max-width: $screenBP) {
+                    width: 250px;
+                    height: 250px;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
+            }
+
+            img#intro-main-image {
+                width: 300px;
+                height: 300px;
+                position: absolute;
+                top: 50%;
+                right: 65px;
+                transform: translate(0, -50%);
+                border-radius: 100%;
+                box-shadow: 0 2px 8px 0 rgba($color: $colourPaletteDark, $alpha: 0.3);
+
+                @media (max-width: $screenBP) {
+                    height: 200px;
+                    width: 200px;
+                    top: 50%;
+                    right: 65px;
+                    transform: translate(0%, -50%);
+                }
+            }
+
+            @media (max-width: $screenBP) {
+                flex-grow: 1;
+            }
+        }
+    }
+}
+
+section.about-me-section {
+    background-color: rgba($color: $highlightColourDark, $alpha: 0.2);
+    padding: 50px 0px;
+
+    div.about-me-detail {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 50px 0px;
+
+        @media (max-width: $screenBP) {
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        img {
+            width: 400px;
+
+            @media (max-width: $screenBP) {
+                width: 250px;
+            }
+        }
+
+        div {
+            width: 500px;
+            display: flex;
+            flex-direction: column;
+            @media (max-width: $screenBP) {
+                width: 100%;
+            }
+
+            h1 {
+                margin: 20px;
+            }
+
+            p {
+                width: 100%;
+                padding: 20px 0px;
+            }
+
+            a {
+                align-self: center;
+            }
+        }
+    }
+
+    div.what-i-do {
+        padding: 50px 0px;
+
+        h1 {
+            margin: 40px 0px 60px 0px;
+        }
+
+        div.card-container {
+            display: flex;
+            justify-content: space-between;
+
+            @media (max-width: $screenBP) {
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            div.card {
+                padding: 40px 25px;
+                border-radius: 10px;
+                background-color: $colourPaletteLight1;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                box-shadow: 0 4px 16px 0 rgba($color: $colourPaletteDark, $alpha: 0.3);
+                width: 320px;
+
+                @media (max-width: $screenBP) {
+                    width: 100%;
+                    margin-bottom: 40px;
+                }
+
+                img {
+                    height: 50px;
+                }
+
+                h3 {
+                    margin: 20px 0px 40px 0px;
+                }
+
+                p {
+                    font-size: 0.9rem;
+                    margin-bottom: 10px;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+section.skill-section {
+    div.skill-detail {
+        padding-bottom: 50px;
+        display: flex;
+        justify-content: space-between;
+
+        @media (max-width: $screenBP) {
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        div.skill-list {
+            width: 100%;
+            padding-bottom: 100px;
+
+            h1 {
+                padding: 30px 0px;
+            }
+
+            div.tech-domain {
+                padding: 20px;
+                margin: 25px 0px 20px 0px;
+                margin-right: 30px;
+                border-radius: 5px;
+                box-shadow: 0 2px 8px 0 rgba($color: $colourPaletteDark, $alpha: 0.3);
+
+                @media (max-width: $screenBP) {
+                    margin-right: 0px;
+                }
+
+                h3 {
+                    padding-bottom: 20px;
+                }
+
+                div.tech-item {
+                    padding: 10px 0px;
+                    display: flex;
+                    align-items: center;
+
+                    img {
+                        padding: 5px 0px;
+                        width: 40px;
+                    }
+
+                    div.tech-info {
+                        width: 100%;
+                        padding-left: 20px;
+
+                        div {
+                            width: 100%;
+                            display: flex;
+                            justify-content: space-between;
+                        }
+
+                        progress {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+
+        div.work-history {
+            width: 100%;
+
+            h1 {
+                padding: 30px 0px;
+            }
+
+            div.work-history-list {
+                border-left: 4px solid $highlightColourDark;
+                // transition: height 0.5s ease-in-out;
+
+                @media (max-width: $screenBP) {
+                    margin-left: 0px;
+                }
+
+                div.work-item {
+                    position: relative;
+                    padding: 20px;
+                    margin: 25px 0px 25px 20px;
+                    border-radius: 5px;
+                    border-left: 3px solid $highlightColourDark;
+                    box-shadow: 0 2px 8px 0 rgba($color: $colourPaletteDark, $alpha: 0.3);
+
+                    @media (max-width: $screenBP) {
+                        margin: 40px 0px 40px 20px;
+                    }
+
+                    div.item-link {
+                        div.circle {
+                            position: absolute;
+                            top: 20px;
+                            left: -31px;
+                            height: 12px;
+                            width: 12px;
+                            border-radius: 50%;
+                            border: 3px solid $highlightColourDark;
+                            background-color: $colourPaletteLight1;
+                        }
+
+                        div.line {
+                            position: absolute;
+                            top: 25px;
+                            left: -20px;
+                            width: 18px;
+                            height: 2px;
+                            background-color: $highlightColourDark;
+                        }
+                    }
+
+                    div.work-duration {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        flex-wrap: wrap;
+                        padding: 10px 0px;
+
+                        div {
+                            display: flex;
+                            align-items: center;
+
+                            img {
+                                margin-left: 5px;
+
+                                @media (max-width: $screenBP) {
+                                    margin-top: 15px;
+                                }
+
+                                &:first-child {
+                                    margin-left: 0px;
+                                }
+                            }
+                        }
+                    }
+
+                    h4 {
+                        padding-top: 10px;
+                    }
+
+                    ul {
+                        padding: 20px;
+
+                        li {
+                            padding-bottom: 10px;
+                            text-align: justify;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    div.education-list {
+        padding-bottom: 100px;
+
+        h1.section-title {
+            padding: 30px 0px;
+        }
+
+        div.education-item {
+            padding: 30px;
+            margin: 40px 0px;
+            box-shadow: 0 4px 16px 0 rgba($color: $colourPaletteDark, $alpha: 0.3);
+            border-radius: 8px;
+            display: flex;
+            align-items: stretch;
+
+            @media (max-width: $screenBP) {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            div.education-detail {
+                flex-grow: 1;
+                padding: 0px 30px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+
+                @media (max-width: $screenBP) {
+                    align-items: center;
+                    padding: 0px;
+                    h1,
+                    h2,
+                    h3,
+                    h4 {
+                        text-align: center;
+                    }
+
+                    h2 {
+                        font-size: 1.5rem;
+                    }
+
+                    h3 {
+                        font-size: 1.25rem;
+                    }
+
+                    h4 {
+                        font-size: 1rem;
+                    }
+                }
+
+                h1,
+                h2,
+                h3,
+                h4 {
+                    margin: 2px;
+                }
+
+                h4 {
+                    margin-top: 20px;
+                }
+            }
+
+            div.education-timeline {
+                display: flex;
+                flex-direction: column;
+                align-items: stretch;
+                justify-content: flex-end;
+
+                @media (max-width: $screenBP) {
+                    padding: 30px 0px;
+                    flex-direction: row-reverse;
+                    align-self: stretch;
+                    align-items: center;
+
+                    h5 {
+                        font-size: 0.75rem;
+                    }
+                }
+
+                div.education-line {
+                    flex-grow: 1;
+                    align-self: center;
+                    width: 4px;
+                    min-height: 4px;
+                    border-radius: 5px;
+                    background-color: $highlightColourDark;
+                    position: relative;
+                    margin: 10px;
+
+                    div.circle {
+                        height: 12px;
+                        width: 12px;
+                        border-radius: 50%;
+                        border: 3px solid $highlightColourDark;
+                        background-color: $colourPaletteLight1;
+                    }
+
+                    div.circle-top {
+                        position: absolute;
+                        top: 0px;
+                        left: 50%;
+                        transform: translateX(-50%);
+
+                        @media (max-width: $screenBP) {
+                            top: 50%;
+                            left: 0px;
+                            transform: translateY(-50%);
+                        }
+                    }
+
+                    div.circle-bottom {
+                        position: absolute;
+                        bottom: 0px;
+                        left: 50%;
+                        transform: translateX(-50%);
+
+                        @media (max-width: $screenBP) {
+                            top: 50%;
+                            left: unset;
+                            right: 0px;
+                            transform: translateY(-50%);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+section.project-section {
+    padding-bottom: 50px;
+
+    h1.section-title {
+        padding: 30px;
+    }
+
+    div.project-list {
+        padding: 40px 0px;
+        display: flex;
+        flex-direction: column;
+
+        div.project-item {
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 3px 12px 0 rgba($color: $colourPaletteDark, $alpha: 0.3);
+            margin-bottom: 50px;
+
+            div.project-meta-info {
+                display: flex;
+                justify-content: space-between;
+                padding: 30px 0px 20px 0px;
+            }
+
+            p {
+                padding-bottom: 20px;
+            }
+
+            div.project-tech-list {
+                display: flex;
+                flex-wrap: wrap;
+                padding-top: 30px;
+
+                h5 {
+                    border-radius: 5px;
+                    padding: 10px 15px;
+                    margin: 10px 0px;
+                    margin-right: 15px;
+                    box-shadow: 0 1px 4px 0 rgba($color: $colourPaletteDark, $alpha: 0.3);
+                    background-color: rgba($color: $highlightColourDark, $alpha: 0.2);
+
+                    &:last-child {
+                        margin-right: 0px;
+                    }
+                }
+            }
+        }
+    }
+
+    div.resume-info {
+        padding-top: 50px;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+section.contact-section {
+    background-color: rgba($color: $highlightColourDark, $alpha: 0.2);
+    padding-top: 20px;
+
+    h1 {
+        padding: 20px 0px 30px 0px;
+    }
+
+    div.profile-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 40px 0px 60px 0px;
+
+        div {
+            padding: 30px 20px;
+            margin: 15px;
+            border-radius: 8px;
+            box-shadow: 0 3px 12px 0 rgba($color: $colourPaletteDark, $alpha: 0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: $colourPaletteLight1;
+
+            img {
+                height: 75px;
+                padding-bottom: 20px;
+            }
+
+            a {
+                color: $colourPaletteDark;
+                padding-bottom: 5px;
+            }
+        }
+    }
+}
+
+footer {
+    background-color: rgba($color: $highlightColourDark, $alpha: 0.2);
+    padding-bottom: 20px;
+
+    div.container {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+
+        @media (max-width: $screenBP) {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        div.contact-me-links {
+            h3 {
+                padding: 10px 0px 20px 0px;
+
+                @media (max-width: $screenBP) {
+                    text-align: center;
+                }
+            }
+
+            div.footer-links {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 5px 0px;
+                justify-content: start;
+
+                @media (max-width: $screenBP) {
+                    align-items: center;
+                }
+
+                div.footer-link {
+                    margin: 5px 0px;
+                    display: flex;
+                    align-items: center;
+
+                    @media (max-width: $screenBP) {
+                        justify-content: center;
+                    }
+
+                    &:hover {
+                        fill: $highlightColourDark;
+                    }
+
+                    svg {
+                        height: 1rem;
+                        margin-right: 10px;
+                    }
+
+                    h5 {
+                        margin: 2px;
+
+                        a {
+                            color: $colourPaletteDark;
+                            padding-bottom: 5px;
+                        }
+                    }
+                }
+            }
+        }
+
+        div.credit-links {
+            h5 {
+                margin-bottom: 10px;
+                text-align: right;
+                @media (max-width: $screenBP) {
+                    margin-top: 25px;
+                    text-align: center;
+                }
+            }
+        }
+    }
+}

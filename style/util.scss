@@ -1,0 +1,143 @@
+@import "color.scss";
+
+$screenBP: 1079px;
+$screenSize: 1080px;
+
+// @font-face {
+//     font-family: 'Montserrat';
+//     src: url('./../font/xyz') format('truetype');
+//     font-weight: 400;
+//     font-style: normal;
+// }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background-color: $colourPaletteLight1;
+    color: $colourPaletteDark;
+    font-size: 16px;
+    font-family: "Montserrat", sans-serif;
+}
+
+button {
+    font-family: "Montserrat", sans-serif;
+}
+
+.container {
+    width: $screenSize;
+    margin: 0px auto;
+    padding: 20px;
+
+    @media (max-width: $screenBP) {
+        width: 100%;
+    }
+}
+
+.underline {
+    position: relative;
+
+    &:hover::before {
+        visibility: visible;
+        transform: scaleX(1);
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: $highlightColourLight;
+        visibility: hidden;
+        transform: scaleX(0);
+        transition: all 0.3s ease-in-out;
+    }
+}
+
+.clickable:hover {
+    cursor: pointer;
+}
+
+p {
+    text-align: justify;
+}
+
+.section-title {
+    text-align: center;
+}
+
+a {
+    color: $highlightColourDark;
+    text-decoration: none;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.75rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+h4 {
+    font-size: 1.25rem;
+}
+
+h5 {
+    font-size: 1rem;
+}
+
+.resume-button {
+    margin: 20px;
+    border-radius: 10px;
+    padding: 15px 40px;
+    background-color: $highlightColourDark;
+    color: $colourPaletteLight1;
+    outline: none;
+    border: none;
+    font-size: 1rem;
+    box-shadow: 0 1px 4px 0 rgba($color: $colourPaletteDark, $alpha: 0.3);
+    transition: all 0.2s ease-in;
+
+    &:hover {
+        padding: 15px 60px;
+    }
+}
+
+progress {
+    width: 100%;
+    height: 6px;
+    border: none;
+    background: $colourPaletteLight2;
+    border-radius: 20px;
+}
+
+progress::-webkit-progress-bar {
+    background: transparent;
+    border-radius: 20px;
+}
+
+progress::-webkit-progress-value {
+    background: $highlightColourDark;
+    background-attachment: fixed;
+    border-radius: 20px;
+}
+
+progress::-moz-progress-bar {
+    background: $highlightColourDark;
+    background-attachment: fixed;
+    border-radius: 20px;
+}
+
+u {
+    text-decoration-color: $highlightColourDark;
+}

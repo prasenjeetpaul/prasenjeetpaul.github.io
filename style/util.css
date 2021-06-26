@@ -1,0 +1,141 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html {
+  background-color: #ffffff;
+  color: #353535;
+  font-size: 16px;
+  font-family: "Montserrat", sans-serif;
+}
+
+button {
+  font-family: "Montserrat", sans-serif;
+}
+
+.container {
+  width: 1080px;
+  margin: 0px auto;
+  padding: 20px;
+}
+
+@media (max-width: 1079px) {
+  .container {
+    width: 100%;
+  }
+}
+
+.underline {
+  position: relative;
+}
+
+.underline:hover::before {
+  visibility: visible;
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+}
+
+.underline::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #00ced1;
+  visibility: hidden;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.clickable:hover {
+  cursor: pointer;
+}
+
+p {
+  text-align: justify;
+}
+
+.section-title {
+  text-align: center;
+}
+
+a {
+  color: #20b2aa;
+  text-decoration: none;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.75rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 1.25rem;
+}
+
+h5 {
+  font-size: 1rem;
+}
+
+.resume-button {
+  margin: 20px;
+  border-radius: 10px;
+  padding: 15px 40px;
+  background-color: #20b2aa;
+  color: #ffffff;
+  outline: none;
+  border: none;
+  font-size: 1rem;
+  -webkit-box-shadow: 0 1px 4px 0 rgba(53, 53, 53, 0.3);
+          box-shadow: 0 1px 4px 0 rgba(53, 53, 53, 0.3);
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+
+.resume-button:hover {
+  padding: 15px 60px;
+}
+
+progress {
+  width: 100%;
+  height: 6px;
+  border: none;
+  background: #d9d9d9;
+  border-radius: 20px;
+}
+
+progress::-webkit-progress-bar {
+  background: transparent;
+  border-radius: 20px;
+}
+
+progress::-webkit-progress-value {
+  background: #20b2aa;
+  background-attachment: fixed;
+  border-radius: 20px;
+}
+
+progress::-moz-progress-bar {
+  background: #20b2aa;
+  background-attachment: fixed;
+  border-radius: 20px;
+}
+
+u {
+  -webkit-text-decoration-color: #20b2aa;
+          text-decoration-color: #20b2aa;
+}
+/*# sourceMappingURL=util.css.map */
