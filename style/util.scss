@@ -141,3 +141,7 @@ progress::-moz-progress-bar {
 u {
     text-decoration-color: $highlightColourDark;
 }
+
+.hidden {
+    visibility: hidden;
+}

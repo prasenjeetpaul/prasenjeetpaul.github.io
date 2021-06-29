@@ -138,4 +138,8 @@ u {
   -webkit-text-decoration-color: #20b2aa;
           text-decoration-color: #20b2aa;
 }
+
+.hidden {
+  visibility: hidden;
+}
 /*# sourceMappingURL=util.css.map */

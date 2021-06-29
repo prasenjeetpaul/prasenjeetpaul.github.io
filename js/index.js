@@ -18,10 +18,16 @@ ScrollTrigger.create({
     }
 });
 
+setTimeout(() => {
+    document.querySelector('header').classList.remove('hidden');
+    document.querySelector('section.intro-section.hidden').classList.remove('hidden');
+});
 
-const introSectionTL = gsap.timeline();
+const introSectionTL = gsap.timeline({ delay: 0.5 });
 
-introSectionTL.from('#intro-message', { duration: 0.5, opacity: 0, y: -150, ease: 'bounce' })
+introSectionTL
+    .from("header", { duration: 0.4, opacity: 0, y: -150 })
+    .from('#intro-message', { duration: 0.5, opacity: 0, y: -150, ease: 'bounce' })
     .from('#intro-name', { duration: 0.5, opacity: 0, x: -200 })
     .from('#intro-designation', { duration: 0.4, opacity: 0, x: -200 }, '-=0.5')
     .from('#intro-link-1', { duration: 0.4, opacity: 0, x: -200 }, '-=0.5')

@@ -139,6 +139,10 @@ u {
           text-decoration-color: #20b2aa;
 }
 
+.hidden {
+  visibility: hidden;
+}
+
 body {
   padding-top: 80px;
 }
