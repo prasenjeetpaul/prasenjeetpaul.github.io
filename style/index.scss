@@ -9,6 +9,14 @@ body {
     }
 }
 
+html:not([data-scroll="0"]) header {
+    box-shadow: 0 4px 16px 0 rgba($color: $colourPaletteDark, $alpha: 0.3);
+}
+
+html[data-scroll="loading"] header {
+    box-shadow: none;
+}
+
 header {
     position: fixed;
     width: 100%;

@@ -149,6 +149,16 @@ body {
   }
 }
 
+html:not([data-scroll="0"]) header {
+  -webkit-box-shadow: 0 4px 16px 0 rgba(53, 53, 53, 0.3);
+          box-shadow: 0 4px 16px 0 rgba(53, 53, 53, 0.3);
+}
+
+html[data-scroll="loading"] header {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
 header {
   position: fixed;
   width: 100%;
