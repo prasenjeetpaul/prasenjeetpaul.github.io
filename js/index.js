@@ -119,9 +119,14 @@ function initializeEducationTimeLine() {
             start: 'top bottom-=35%',
         }
     });
-    educationTL.from('.education-item', { duration: 0.5, opacity: 0, y: 100 });
-    educationTL.from('.education-detail', { duration: 0.5, opacity: 0, x: -100 }, '-=0.3');
-    educationTL.from('.education-line', { duration: 0.5, flexGrow: 0 }, '-=0.2');
+    educationTL.from('#education-item-1', { duration: 0.5, opacity: 0, y: 100 });
+    educationTL.from('#education-item-1 .education-detail', { duration: 0.5, opacity: 0, x: -100 }, '-=0.3');
+    educationTL.from('#education-item-2', { duration: 0.5, opacity: 0, y: 100 });
+    educationTL.from('#education-item-2 .education-detail', { duration: 0.5, opacity: 0, x: -100 }, '-=0.3');
+    educationTL.from('#education-item-2 .education-timeline', { duration: 0.5, opacity: 0 });
+    educationTL.from('#education-item-2 .education-line', { duration: 0.5, opacity: 0, flexGrow: 0 }, '-=0.3');
+    educationTL.from('#education-item-1 .education-timeline', { duration: 0.5, opacity: 0 });
+    educationTL.from('#education-item-1 .education-line', { duration: 0.5, opacity: 0, flexGrow: 0 }, "-=0.2");
 }
 
 function initializeProjectTimeLine() {
