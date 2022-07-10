@@ -1079,8 +1079,107 @@ section.project-section div.project-list div.project-item div.project-tech-list 
   margin-right: 0px;
 }
 
-section.project-section div.resume-info {
-  padding-top: 50px;
+section.certificate-section {
+  padding-bottom: 50px;
+}
+
+section.certificate-section h1.section-title {
+  padding: 30px;
+}
+
+section.certificate-section div.certificate-list {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  gap: 10px 15px;
+  padding-top: 20px;
+}
+
+@media (max-width: 1079px) {
+  section.certificate-section div.certificate-list {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
+}
+
+section.certificate-section div.certificate-list div.certificate-item {
+  padding: 30px;
+  margin: 30px 20px;
+  -webkit-box-shadow: 0 4px 16px 0 rgba(53, 53, 53, 0.3);
+          box-shadow: 0 4px 16px 0 rgba(53, 53, 53, 0.3);
+  border-radius: 8px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+@media (max-width: 1079px) {
+  section.certificate-section div.certificate-list div.certificate-item {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+}
+
+section.certificate-section div.certificate-list div.certificate-item h4,
+section.certificate-section div.certificate-list div.certificate-item h5,
+section.certificate-section div.certificate-list div.certificate-item p {
+  padding-bottom: 10px;
+}
+
+section.certificate-section div.certificate-list div.certificate-item h6 {
+  padding-bottom: 4px;
+}
+
+section.certificate-section div.certificate-list div.certificate-item img {
+  width: 100px;
+  margin-right: 20px;
+  padding-bottom: 20px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+section.certificate-section div.certificate-list div.certificate-item div {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+section.certificate-section div.certificate-list div.certificate-item div div {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}
+
+section.certificate-section div.certificate-list div.certificate-item div div a {
+  padding-top: 30px;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+
+section.certificate-section div.resume-info {
+  padding-top: 100px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

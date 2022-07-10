@@ -103,6 +103,7 @@ for (let i = 0; i < workItemArray.length; i++) {
                 if (i == workItemArray.length - 1) {
                     initializeEducationTimeLine();
                     initializeProjectTimeLine();
+                    initializeCertificateTimeLine();
                     initializeFooterTimeLine();
                     ScrollTrigger.refresh();
                 }
@@ -141,6 +142,18 @@ function initializeProjectTimeLine() {
     });
 }
 
+function initializeCertificateTimeLine() {
+    const profileLinkTL = gsap.timeline({
+        scrollTrigger: {
+            trigger: '.certificate-list',
+            start: 'top bottom-=30%',
+        }
+    });
+    Array.from(document.querySelectorAll('.certificate-item')).forEach(ele => {
+        profileLinkTL.from(ele, { duration: 0.5, opacity: 0, y: 100 }, '-=0.3')
+    });
+}
+
 function initializeFooterTimeLine() {
     const resumeTL = gsap.timeline({
         scrollTrigger: {
@@ -166,7 +179,7 @@ function initializeFooterTimeLine() {
 
 
 
-const NAV_LINKS = ['home-nav-link', 'about-nav-link', 'skill-nav-link', 'project-nav-link', 'contact-nav-link'];
+const NAV_LINKS = ['home-nav-link', 'about-nav-link', 'skill-nav-link', 'project-nav-link', 'certificate-nav-link', 'contact-nav-link'];
 
 function initializeNavLinks() {
     ScrollTrigger.create({
@@ -192,12 +205,18 @@ function initializeNavLinks() {
         onLeaveBack: () => setActiveNavLink('skill-nav-link'),
     });
 
+    ScrollTrigger.create({
+        trigger: '.certificate-section',
+        start: 'top 50%',
+        onEnter: () => setActiveNavLink('certificate-nav-link'),
+        onLeaveBack: () => setActiveNavLink('project-nav-link'),
+    });
 
     ScrollTrigger.create({
         trigger: '.contact-section',
         start: 'top bottom-=10%',
         onEnter: () => setActiveNavLink('contact-nav-link'),
-        onLeaveBack: () => setActiveNavLink('project-nav-link'),
+        onLeaveBack: () => setActiveNavLink('certificate-nav-link'),
     });
 }
 
@@ -229,6 +248,10 @@ function setNavLinkClickListeners() {
 
     getNavLink('project-nav-link').addEventListener('click', () => {
         document.querySelector('.project-section').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    getNavLink('certificate-nav-link').addEventListener('click', () => {
+        document.querySelector('.certificate-section').scrollIntoView({ behavior: 'smooth' });
     });
 
     getNavLink('contact-nav-link').addEventListener('click', () => {
