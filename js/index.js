@@ -66,6 +66,15 @@ whatIDoTL.from('#card-1', { duration: '0.5', opacity: 0, y: 100 }, '-=0.2');
 whatIDoTL.from('#card-3', { duration: '0.5', opacity: 0, y: 100 }, '-=0.3');
 
 
+
+const whatIDoCardLength = document.getElementsByClassName('card').length;
+for (let i = 1; i <= whatIDoCardLength; i++) {
+    const card = document.querySelector(`#card-${i}`);
+    card.addEventListener("mouseenter", () => gsap.to(`#card-${i}`, { y: -20, duration: '0.3' }));
+    card.addEventListener("mouseleave", () => gsap.to(`#card-${i}`, { y: 0, duration: '0.3' }));
+}
+
+
 const techDomainCount = document.getElementsByClassName('tech-domain').length;
 for (let i = 1; i <= techDomainCount; i++) {
     const tl = gsap.timeline({
@@ -99,25 +108,31 @@ for (let i = 0; i < workItemArray.length; i++) {
             duration: 0.5,
             opacity: 0,
             y: 100,
-            onComplete: () => {
-                if (i == workItemArray.length - 1) {
-                    initializeEducationTimeLine();
-                    initializeProjectTimeLine();
-                    initializeCertificateTimeLine();
-                    initializeFooterTimeLine();
-                    ScrollTrigger.refresh();
-                }
-            }
+            // onComplete: () => {
+            //     if (i == workItemArray.length - 1) {
+            //         initializeEducationTimeLine();
+            //         initializeProjectTimeLine();
+            //         initializeCertificateTimeLine();
+            //         initializeFooterTimeLine();
+            //         ScrollTrigger.refresh();
+            //     }
+            // }
         }
     );
 }
+
+initializeEducationTimeLine();
+initializeProjectTimeLine();
+initializeCertificateTimeLine();
+initializeFooterTimeLine();
+// ScrollTrigger.refresh();
 
 
 function initializeEducationTimeLine() {
     const educationTL = gsap.timeline({
         scrollTrigger: {
-            trigger: '.education-item',
-            start: 'top bottom-=35%',
+            trigger: '#education-item-1',
+            start: 'top bottom-=40%',
         }
     });
     educationTL.from('#education-item-1', { duration: 0.5, opacity: 0, y: 100 });
@@ -128,6 +143,12 @@ function initializeEducationTimeLine() {
     educationTL.from('#education-item-2 .education-line', { duration: 0.5, opacity: 0, flexGrow: 0 }, '-=0.3');
     educationTL.from('#education-item-1 .education-timeline', { duration: 0.3, opacity: 0 },);
     educationTL.from('#education-item-1 .education-line', { duration: 0.5, opacity: 0, flexGrow: 0 }, "-=0.2");
+
+    document.querySelector('#education-item-1').addEventListener("mouseenter", () => gsap.to('#education-item-1', { scale: 1.03, duration: '0.3' }));
+    document.querySelector('#education-item-1').addEventListener("mouseleave", () => gsap.to('#education-item-1', { scale: 1, duration: '0.3' }));
+    document.querySelector('#education-item-2').addEventListener("mouseenter", () => gsap.to('#education-item-2', { scale: 1.03, duration: '0.3' }));
+    document.querySelector('#education-item-2').addEventListener("mouseleave", () => gsap.to('#education-item-2', { scale: 1, duration: '0.3' }));
+
 }
 
 function initializeProjectTimeLine() {
@@ -139,6 +160,8 @@ function initializeProjectTimeLine() {
             }
         });
         tl.from(ele, { duration: 0.5, opacity: 0, y: 100 })
+        ele.addEventListener("mouseenter", () => gsap.to(ele, { scale: 1.03, duration: '0.3' }));
+        ele.addEventListener("mouseleave", () => gsap.to(ele, { scale: 1, duration: '0.3' }));
     });
 }
 
@@ -150,7 +173,9 @@ function initializeCertificateTimeLine() {
         }
     });
     Array.from(document.querySelectorAll('.certificate-item')).forEach(ele => {
-        profileLinkTL.from(ele, { duration: 0.5, opacity: 0, y: 100 }, '-=0.3')
+        profileLinkTL.from(ele, { duration: 0.5, opacity: 0, y: 100 }, '-=0.3');
+        ele.addEventListener("mouseenter", () => gsap.to(ele, { scale: 1.05, duration: '0.3' }));
+        ele.addEventListener("mouseleave", () => gsap.to(ele, { scale: 1, duration: '0.3' }));
     });
 }
 
@@ -171,7 +196,9 @@ function initializeFooterTimeLine() {
         }
     });
     Array.from(document.querySelectorAll('.profile-links div')).forEach(ele => {
-        profileLinkTL.from(ele, { duration: 0.5, opacity: 0, y: 100 }, '-=0.3')
+        profileLinkTL.from(ele, { duration: 0.5, opacity: 0, y: 100 }, '-=0.3');
+        ele.addEventListener("mouseenter", () => gsap.to(ele, { y: -10, duration: '0.3' }));
+        ele.addEventListener("mouseleave", () => gsap.to(ele, { y: 0, duration: '0.3' }));
     });
 }
 
@@ -292,6 +319,20 @@ function initHeaderAnimation() {
 
     // Update scroll position for first time
     storeScroll();
+}
+
+
+const resumeButtons = document.getElementsByClassName('resume-button')
+for (let i = 0; i < resumeButtons.length; i++) {
+    const resumeButtonAnimation = gsap.to(resumeButtons[i], {
+        scale: 1.05,
+        repeat: -1,
+        yoyo: true,
+        duration: 0.5,
+        ease: 'power2.inOut'
+    });
+    resumeButtons[i].addEventListener('mouseenter', () => resumeButtonAnimation.pause());
+    resumeButtons[i].addEventListener('mouseleave', () => resumeButtonAnimation.play());
 }
 
 function init() {

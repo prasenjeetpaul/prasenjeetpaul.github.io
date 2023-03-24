@@ -1,8 +1,7 @@
 * {
   margin: 0;
   padding: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html {
@@ -21,7 +20,6 @@ button {
   margin: 0px auto;
   padding: 20px;
 }
-
 @media (max-width: 1079px) {
   .container {
     width: 100%;
@@ -31,13 +29,10 @@ button {
 .underline {
   position: relative;
 }
-
 .underline:hover::before {
   visibility: visible;
-  -webkit-transform: scaleX(1);
-          transform: scaleX(1);
+  transform: scaleX(1);
 }
-
 .underline::before {
   content: "";
   position: absolute;
@@ -47,9 +42,7 @@ button {
   left: 0;
   background-color: #00ced1;
   visibility: hidden;
-  -webkit-transform: scaleX(0);
-          transform: scaleX(0);
-  -webkit-transition: all 0.3s ease-in-out;
+  transform: scaleX(0);
   transition: all 0.3s ease-in-out;
 }
 
@@ -99,14 +92,7 @@ h5 {
   outline: none;
   border: none;
   font-size: 1rem;
-  -webkit-box-shadow: 0 1px 4px 0 rgba(53, 53, 53, 0.3);
-          box-shadow: 0 1px 4px 0 rgba(53, 53, 53, 0.3);
-  -webkit-transition: all 0.2s ease-in;
-  transition: all 0.2s ease-in;
-}
-
-.resume-button:hover {
-  padding: 15px 60px;
+  box-shadow: 0 1px 4px 0 rgba(53, 53, 53, 0.3);
 }
 
 progress {
@@ -135,11 +121,9 @@ progress::-moz-progress-bar {
 }
 
 u {
-  -webkit-text-decoration-color: #20b2aa;
-          text-decoration-color: #20b2aa;
+  text-decoration-color: #20b2aa;
 }
 
 .hidden {
   visibility: hidden;
-}
-/*# sourceMappingURL=util.css.map */
+}/*# sourceMappingURL=util.css.map */
