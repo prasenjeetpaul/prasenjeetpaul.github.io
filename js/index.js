@@ -159,7 +159,14 @@ function initializeProjectTimeLine() {
                 start: 'top bottom-=30%'
             }
         });
-        tl.from(ele, { duration: 0.5, opacity: 0, y: 100 })
+        tl.from(ele, {
+            duration: 0.5, opacity: 0, y: 100, onComplete: () => {
+                setTimeout(() => {
+                    ele.querySelector("a").classList.add("animate__animated");
+                    ele.querySelector("a").classList.add("animate__shakeX");
+                }, 100)
+            }
+        })
         ele.addEventListener("mouseenter", () => gsap.to(ele, { scale: 1.03, duration: '0.3' }));
         ele.addEventListener("mouseleave", () => gsap.to(ele, { scale: 1, duration: '0.3' }));
     });
@@ -173,11 +180,80 @@ function initializeCertificateTimeLine() {
         }
     });
     Array.from(document.querySelectorAll('.certificate-item')).forEach(ele => {
-        profileLinkTL.from(ele, { duration: 0.5, opacity: 0, y: 100 }, '-=0.3');
+        profileLinkTL.from(ele, {
+            duration: 0.5, opacity: 0, y: 100, onComplete: () => {
+                ele.querySelector("a").classList.add("animate__animated");
+                ele.querySelector("a").classList.add("animate__bounce");
+            }
+        }, '-=0.3');
         ele.addEventListener("mouseenter", () => gsap.to(ele, { scale: 1.05, duration: '0.3' }));
         ele.addEventListener("mouseleave", () => gsap.to(ele, { scale: 1, duration: '0.3' }));
     });
 }
+
+
+let currRecIndex = 1;
+let recVisited = [false, false, false]
+
+
+function initSlider() {
+    gsap.set('#recommendation-item-1', { xPercent: -100 });
+    gsap.set('#recommendation-item-2', { xPercent: -100 });
+    gsap.set('#recommendation-item-3', { xPercent: -100 });
+    gsap.set('#recommendation-item-1', { xPercent: 0 });
+
+    gsap.timeline({
+        scrollTrigger: {
+            trigger: '.recommendation-list',
+            start: 'top bottom-=40%',
+        }
+    }).from(".recommendation-list", {
+        duration: 0.5, opacity: 0, y: 100, onComplete: () => {
+            playRecTypeAnimation(1);
+            document.getElementById(`circle-${currRecIndex}`).classList.add('filled');
+        }
+    });
+}
+
+
+function playRecTypeAnimation(recIndex) {
+    if (recVisited[recIndex - 1]) return
+    const ele = document.querySelector(`#recommendation-item-${recIndex} span.typeable`);
+    ele.classList.add('type');
+    ele.style.setProperty('opacity', 1);
+    ele.style.setProperty('--n', ele.innerText.length);
+    recVisited[recIndex - 1] = true;
+}
+
+
+function moveNext() {
+    document.getElementById(`circle-${currRecIndex}`).classList.remove('filled');
+    gsap.fromTo(`#recommendation-item-${currRecIndex}`, { xPercent: 0 }, { xPercent: -100 });
+    currRecIndex = currRecIndex >= 3 ? 1 : currRecIndex + 1;
+    gsap.fromTo(`#recommendation-item-${currRecIndex}`, { xPercent: 100 }, { xPercent: 0, onComplete: () => playRecTypeAnimation(currRecIndex) });
+    document.getElementById(`circle-${currRecIndex}`).classList.add('filled');
+}
+
+function movePrev() {
+    document.getElementById(`circle-${currRecIndex}`).classList.remove('filled');
+    gsap.fromTo(`#recommendation-item-${currRecIndex}`, { xPercent: 0 }, { xPercent: 100 });
+    currRecIndex = currRecIndex <= 1 ? 3 : currRecIndex - 1;
+    gsap.fromTo(`#recommendation-item-${currRecIndex}`, { xPercent: -100 }, { xPercent: 0, onComplete: () => playRecTypeAnimation(currRecIndex) });
+    document.getElementById(`circle-${currRecIndex}`).classList.add('filled');
+}
+
+function moveToRecommendation(recIndex) {
+    if (recIndex == currRecIndex) return;
+    const oldRecIndex = currRecIndex
+    const newRecIndex = recIndex;
+    document.getElementById(`circle-${currRecIndex}`).classList.remove('filled');
+    gsap.fromTo(`#recommendation-item-${currRecIndex}`, { xPercent: 0 }, { xPercent: newRecIndex > oldRecIndex ? -100 : 100 });
+    currRecIndex = recIndex;
+    gsap.fromTo(`#recommendation-item-${currRecIndex}`, { xPercent: newRecIndex > oldRecIndex ? 100 : -100 }, { xPercent: 0, onComplete: () => playRecTypeAnimation(currRecIndex) });
+    document.getElementById(`circle-${currRecIndex}`).classList.add('filled');
+}
+
+
 
 function initializeFooterTimeLine() {
     const resumeTL = gsap.timeline({
@@ -340,6 +416,7 @@ function init() {
     setNavLinkClickListeners();
     setActiveNavLink('home-nav-link');
     initHeaderAnimation();
+    initSlider();
 }
 
 document.onload = init();

@@ -676,6 +676,10 @@ section.project-section {
                 padding-bottom: 20px;
             }
 
+            a {
+                display: inline-block;
+            }
+
             div.project-tech-list {
                 display: flex;
                 flex-wrap: wrap;
@@ -697,6 +701,152 @@ section.project-section {
         }
     }
 
+}
+
+section.recomendation-section {
+    background-color: rgba($color: $highlightColourDark, $alpha: 0.2);
+    padding: 50px 0px 80px 0px;
+
+    h1.section-title {
+        padding-bottom: 50px;
+    }
+
+    div.recommendation-list {
+        padding: 30px 0px;
+        position: relative;
+        height: 500px;
+        overflow: hidden;
+
+
+
+        div.recommendation-item {
+            position: absolute;
+            padding: 40px;
+            width: 100%;
+            top: 50%;
+            left: 0px;
+            transform: translateY(-50%);
+
+            div.recommendation-content {
+                border-radius: 8px;
+                box-shadow: 0 3px 12px 0 rgba($color: $highlightColourDark, $alpha: 0.3);
+                background-color: $colourPaletteLight1;
+                padding: 40px;
+                width: 100%;
+
+                div.header {
+                    display: flex;
+                    align-items: center;
+                    padding-bottom: 30px;
+
+                    img {
+                        height: 75px;
+                        border-radius: 50%;
+                    }
+
+                    div {
+                        padding: 0px 20px;
+
+                        span {
+                            display: block;
+                            padding: 5px 0px;
+                        }
+                    }
+                }
+
+                span.typeable {
+                    opacity: 0;
+                }
+
+                span.type {
+                    font-family: monospace;
+                    color: #0000;
+                    background:
+                        linear-gradient(-90deg, $colourPaletteDark 5px, #0000 0) 10px 0,
+                        linear-gradient($colourPaletteDark 0 0) 0 0;
+                    background-size: calc(var(--n)*1ch) 200%;
+                    -webkit-background-clip: padding-box, text;
+                    background-clip: padding-box, text;
+                    background-repeat: no-repeat;
+                    animation:
+                        b .5s infinite steps(1),
+                        t calc(var(--n)*.03s) steps(var(--n)) forwards;
+                }
+
+
+                @keyframes t {
+                    from {
+                        background-size: 0 200%
+                    }
+                }
+
+                @keyframes b {
+                    50% {
+                        background-position: 0 -100%, 0 0
+                    }
+                }
+
+                div.footer {
+                    display: flex;
+                    padding-top: 30px;
+                    justify-content: flex-end;
+                    align-items: center;
+                }
+            }
+        }
+
+        button.prev-btn {
+            position: absolute;
+            top: 50%;
+            left: 0px;
+            transform: translateY(-50%);
+        }
+
+        button.next-btn {
+            position: absolute;
+            top: 50%;
+            right: 0px;
+            transform: translateY(-50%);
+        }
+
+        button.nav-btn {
+            background-color: transparent;
+            border: none;
+            transition: scale 0.1s ease-in;
+
+            &:hover {
+                cursor: pointer;
+                scale: 1.2;
+            }
+        }
+
+        div.nav-bottom {
+            display: flex;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+
+            .circle {
+                width: 15px;
+                height: 15px;
+                margin: 0px 4px;
+                border-radius: 50%;
+                border: 2px solid $colourPaletteDark;
+                display: block;
+                transition: all 0.2s ease-in;
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+
+            .circle.filled {
+                background-color: $colourPaletteDark;
+            }
+        }
+
+    }
 }
 
 section.certificate-section {

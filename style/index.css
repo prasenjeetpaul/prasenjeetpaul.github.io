@@ -743,6 +743,9 @@ section.project-section div.project-list div.project-item div.project-meta-info 
 section.project-section div.project-list div.project-item p {
   padding-bottom: 20px;
 }
+section.project-section div.project-list div.project-item a {
+  display: inline-block;
+}
 section.project-section div.project-list div.project-item div.project-tech-list {
   display: flex;
   flex-wrap: wrap;
@@ -758,6 +761,123 @@ section.project-section div.project-list div.project-item div.project-tech-list 
 }
 section.project-section div.project-list div.project-item div.project-tech-list h5:last-child {
   margin-right: 0px;
+}
+
+section.recomendation-section {
+  background-color: rgba(32, 178, 170, 0.2);
+  padding: 50px 0px 80px 0px;
+}
+section.recomendation-section h1.section-title {
+  padding-bottom: 50px;
+}
+section.recomendation-section div.recommendation-list {
+  padding: 30px 0px;
+  position: relative;
+  height: 500px;
+  overflow: hidden;
+}
+section.recomendation-section div.recommendation-list div.recommendation-item {
+  position: absolute;
+  padding: 40px;
+  width: 100%;
+  top: 50%;
+  left: 0px;
+  transform: translateY(-50%);
+}
+section.recomendation-section div.recommendation-list div.recommendation-item div.recommendation-content {
+  border-radius: 8px;
+  box-shadow: 0 3px 12px 0 rgba(32, 178, 170, 0.3);
+  background-color: #ffffff;
+  padding: 40px;
+  width: 100%;
+}
+section.recomendation-section div.recommendation-list div.recommendation-item div.recommendation-content div.header {
+  display: flex;
+  align-items: center;
+  padding-bottom: 30px;
+}
+section.recomendation-section div.recommendation-list div.recommendation-item div.recommendation-content div.header img {
+  height: 75px;
+  border-radius: 50%;
+}
+section.recomendation-section div.recommendation-list div.recommendation-item div.recommendation-content div.header div {
+  padding: 0px 20px;
+}
+section.recomendation-section div.recommendation-list div.recommendation-item div.recommendation-content div.header div span {
+  display: block;
+  padding: 5px 0px;
+}
+section.recomendation-section div.recommendation-list div.recommendation-item div.recommendation-content span.typeable {
+  opacity: 0;
+}
+section.recomendation-section div.recommendation-list div.recommendation-item div.recommendation-content span.type {
+  font-family: monospace;
+  color: rgba(0, 0, 0, 0);
+  background: linear-gradient(-90deg, #353535 5px, rgba(0, 0, 0, 0) 0) 10px 0, linear-gradient(#353535 0 0) 0 0;
+  background-size: calc(var(--n) * 1ch) 200%;
+  -webkit-background-clip: padding-box, text;
+  background-clip: padding-box, text;
+  background-repeat: no-repeat;
+  animation: b 0.5s infinite steps(1), t calc(var(--n) * 0.03s) steps(var(--n)) forwards;
+}
+@keyframes t {
+  from {
+    background-size: 0 200%;
+  }
+}
+@keyframes b {
+  50% {
+    background-position: 0 -100%, 0 0;
+  }
+}
+section.recomendation-section div.recommendation-list div.recommendation-item div.recommendation-content div.footer {
+  display: flex;
+  padding-top: 30px;
+  justify-content: flex-end;
+  align-items: center;
+}
+section.recomendation-section div.recommendation-list button.prev-btn {
+  position: absolute;
+  top: 50%;
+  left: 0px;
+  transform: translateY(-50%);
+}
+section.recomendation-section div.recommendation-list button.next-btn {
+  position: absolute;
+  top: 50%;
+  right: 0px;
+  transform: translateY(-50%);
+}
+section.recomendation-section div.recommendation-list button.nav-btn {
+  background-color: transparent;
+  border: none;
+  transition: scale 0.1s ease-in;
+}
+section.recomendation-section div.recommendation-list button.nav-btn:hover {
+  cursor: pointer;
+  scale: 1.2;
+}
+section.recomendation-section div.recommendation-list div.nav-bottom {
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+section.recomendation-section div.recommendation-list div.nav-bottom .circle {
+  width: 15px;
+  height: 15px;
+  margin: 0px 4px;
+  border-radius: 50%;
+  border: 2px solid #353535;
+  display: block;
+  transition: all 0.2s ease-in;
+}
+section.recomendation-section div.recommendation-list div.nav-bottom .circle:hover {
+  cursor: pointer;
+}
+section.recomendation-section div.recommendation-list div.nav-bottom .circle.filled {
+  background-color: #353535;
 }
 
 section.certificate-section {
