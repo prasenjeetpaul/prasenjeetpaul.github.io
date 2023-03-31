@@ -703,9 +703,19 @@ section.project-section {
 
 }
 
+div.recommendation-section-border {
+    @media (max-width: $screenBP) {
+        display: none;
+    }
+}
+
 section.recomendation-section {
     background-color: rgba($color: $highlightColourDark, $alpha: 0.2);
     padding: 50px 0px 80px 0px;
+
+    @media (max-width: $screenBP) {
+        display: none;
+    }
 
     h1.section-title {
         padding-bottom: 50px;

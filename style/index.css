@@ -763,9 +763,20 @@ section.project-section div.project-list div.project-item div.project-tech-list 
   margin-right: 0px;
 }
 
+@media (max-width: 1079px) {
+  div.recommendation-section-border {
+    display: none;
+  }
+}
+
 section.recomendation-section {
   background-color: rgba(32, 178, 170, 0.2);
   padding: 50px 0px 80px 0px;
+}
+@media (max-width: 1079px) {
+  section.recomendation-section {
+    display: none;
+  }
 }
 section.recomendation-section h1.section-title {
   padding-bottom: 50px;
