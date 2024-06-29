@@ -200,6 +200,7 @@ function initSlider() {
     gsap.set('#recommendation-item-1', { xPercent: -100 });
     gsap.set('#recommendation-item-2', { xPercent: -100 });
     gsap.set('#recommendation-item-3', { xPercent: -100 });
+    gsap.set('#recommendation-item-4', { xPercent: -100 });
     gsap.set('#recommendation-item-1', { xPercent: 0 });
 
     gsap.timeline({
@@ -229,7 +230,7 @@ function playRecTypeAnimation(recIndex) {
 function moveNext() {
     document.getElementById(`circle-${currRecIndex}`).classList.remove('filled');
     gsap.fromTo(`#recommendation-item-${currRecIndex}`, { xPercent: 0 }, { xPercent: -100 });
-    currRecIndex = currRecIndex >= 3 ? 1 : currRecIndex + 1;
+    currRecIndex = currRecIndex >= 4 ? 1 : currRecIndex + 1;
     gsap.fromTo(`#recommendation-item-${currRecIndex}`, { xPercent: 100 }, { xPercent: 0, onComplete: () => playRecTypeAnimation(currRecIndex) });
     document.getElementById(`circle-${currRecIndex}`).classList.add('filled');
 }
@@ -237,7 +238,7 @@ function moveNext() {
 function movePrev() {
     document.getElementById(`circle-${currRecIndex}`).classList.remove('filled');
     gsap.fromTo(`#recommendation-item-${currRecIndex}`, { xPercent: 0 }, { xPercent: 100 });
-    currRecIndex = currRecIndex <= 1 ? 3 : currRecIndex - 1;
+    currRecIndex = currRecIndex <= 1 ? 4 : currRecIndex - 1;
     gsap.fromTo(`#recommendation-item-${currRecIndex}`, { xPercent: -100 }, { xPercent: 0, onComplete: () => playRecTypeAnimation(currRecIndex) });
     document.getElementById(`circle-${currRecIndex}`).classList.add('filled');
 }
